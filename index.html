@@ -4,9 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Nugget Site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333;
+            color: white;
+            min-height: 200vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0;
+            background: purple;
+            border-radius: 0 0 15px 15px;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin: 0;
+            animation: fadeIn 3s;
+        }
+
+        h2 {
+            text-align: center;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        main {
+            flex: 1;
+            padding: 100px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #444;
+        }
+
+        button {
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            button:hover {
+                background-color: #5a3ea6;
+            }
+
+        @keyframes fadeInOpacity {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOutOpacity {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>test</h1>
-    <h2>if you see this it has workedtttttttttttttttttttt</h2>
+    <header>
+        <h1>Project Nugget</h1>
+    </header>
+    <main>
+        <h2 class="fade">woohoo</h2>
+    </main>
+    <footer>
+        <p>&copy; 2025 AnotherNugget | Money that is made off Project Nugget is non-profit.</p>
+        <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const h2Elements = document.querySelectorAll('h2');
+            h2Elements.forEach((h2, index) => {
+                const rect = h2.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    h2.style.animation = 'fadeInOpacity 1s forwards';
+                } else if (rect.top > window.innerHeight || rect.bottom < 0) {
+                    h2.style.animation = 'fadeOutOpacity 1s forwards';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
