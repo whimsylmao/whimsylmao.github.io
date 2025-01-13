@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Nugget Site</title>
+    <link rel="icon" href="https://github.com/Project-Nugget/project-nugget.github.io/blob/main/images/73226ab431f68bafc2ad57757318352d.png?raw=true" type="image/png">
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Roboto', sans-serif;
             background-color: #333;
             color: white;
             min-height: 200vh;
@@ -16,22 +17,52 @@
             flex-direction: column;
         }
 
+        nav {
+            background: black;
+            color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            z-index: 1;
+        }
+
+            nav button {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1em;
+                cursor: pointer;
+            }
+
+                nav button:hover {
+                    text-decoration: underline;
+                }
+
         header {
             text-align: center;
-            padding: 80px 0;
+            padding: 40px 0;
             background: purple;
-            border-radius: 0 0 15px 15px;
+            background-image: url('https://github.com/Project-Nugget/project-nugget.github.io/blob/88845254b964eb929be8bd09a5e6cc7bb55559dd/images/image_2025-01-13_023657818.png?raw=true');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            transform: scale(0.85);
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 4em;
             margin: 0;
             animation: fadeIn 3s;
         }
 
         h2 {
             text-align: center;
+            font-size: 1.5em;
             opacity: 0;
+            animation: fadeInOpacity 1s forwards;
+            white-space: pre-line;
         }
 
         @keyframes fadeIn {
@@ -47,6 +78,8 @@
         main {
             flex: 1;
             padding: 100px;
+            background: rgb(157,157,157);
+            background: linear-gradient(90deg, rgba(157,157,157,1) 0%, rgba(187,187,187,1) 13%, rgba(188,188,188,1) 35%, rgba(106,106,106,1) 100%);
         }
 
         footer {
@@ -63,10 +96,12 @@
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
             button:hover {
                 background-color: #5a3ea6;
+                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             }
 
         @keyframes fadeInOpacity {
@@ -90,30 +125,9 @@
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Project Nugget</h1>
-    </header>
-    <main>
-        <h2 class="fade">woohoo</h2>
-    </main>
-    <footer>
-        <p>&copy; 2025 AnotherNugget | Money that is made off Project Nugget is non-profit.</p>
-        <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button>
-    </footer>
+<body onload="document.querySelector('.fade').style.opacity = 1;">
+    <nav> <button onclick="window.location.reload()">Home</button> <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button> <button onclick="window.open('https://www.meta.com/experiences/freaky-nugget/27442133125385525/', '_blank')">Download</button> </nav> <header> <h1>Project Nugget</h1> </header> <main> <h2 class="fade">Welcome to the Project Nugget Website!</h2> <h2 class="fade">Here, you can buy Merch (soon)</h2> <h2 class="fade">Find our Discord & Game Download.</h2> <h2 class="fade">And more will be here soon.</h2> <h2 class="fade">Thanks for visiting!</h2> </main> <footer> <p>&copy; 2025 AnotherNugget | Money that is made off Project Nugget is non-profit.</p> <p>Contact us at <a href="mailto:asteroidbusiness1@gmail.com">asteroidbusiness1@gmail.com</a></p> <p>In-game reports MUST be completed through the leaderboard or the Discord</p> <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button> </footer>
 
-    <script>
-        window.addEventListener('scroll', function () {
-            const h2Elements = document.querySelectorAll('h2');
-            h2Elements.forEach((h2, index) => {
-                const rect = h2.getBoundingClientRect();
-                if (rect.top < window.innerHeight && rect.bottom >= 0) {
-                    h2.style.animation = 'fadeInOpacity 1s forwards';
-                } else if (rect.top > window.innerHeight || rect.bottom < 0) {
-                    h2.style.animation = 'fadeOutOpacity 1s forwards';
-                }
-            });
-        });
-    </script>
+    <script>window.addEventListener('scroll', function () { const h2Elements = document.querySelectorAll('h2'); h2Elements.forEach((h2) => { const rect = h2.getBoundingClientRect(); if (rect.top < window.innerHeight && rect.bottom >= 0) { h2.style.animation = 'fadeInOpacity 1s forwards'; } else { h2.style.animation = 'fadeOutOpacity 1s forwards'; } }); });</script>
 </body>
 </html>
