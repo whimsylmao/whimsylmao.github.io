@@ -1,133 +1,122 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Nugget Site</title>
-    <link rel="icon" href="https://github.com/Project-Nugget/project-nugget.github.io/blob/main/images/73226ab431f68bafc2ad57757318352d.png?raw=true" type="image/png">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: #333;
-            color: white;
-            min-height: 200vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        nav {
-            background: black;
-            color: white;
-            padding: 10px;
-            position: sticky;
-            top: 0;
-            display: flex;
-            justify-content: space-around;
-            z-index: 1;
-        }
-
-            nav button {
-                background: none;
-                border: none;
-                color: white;
-                font-size: 1em;
-                cursor: pointer;
-            }
-
-                nav button:hover {
-                    text-decoration: underline;
-                }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: purple;
-            background-image: url('https://github.com/Project-Nugget/project-nugget.github.io/blob/88845254b964eb929be8bd09a5e6cc7bb55559dd/images/image_2025-01-13_023657818.png?raw=true');
-            background-size: cover;
-            background-position: center;
-            border-radius: 15px;
-            transform: scale(0.85);
-        }
-
-        h1 {
-            font-size: 4em;
-            margin: 0;
-            animation: fadeIn 3s;
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 1.5em;
-            opacity: 0;
-            animation: fadeInOpacity 1s forwards;
-            white-space: pre-line;
-        }
-
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        main {
-            flex: 1;
-            padding: 100px;
-            background: rgb(157,157,157);
-            background: linear-gradient(90deg, rgba(157,157,157,1) 0%, rgba(187,187,187,1) 13%, rgba(188,188,188,1) 35%, rgba(106,106,106,1) 100%);
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px;
-            background: #444;
-        }
-
-        button {
-            background-color: purple;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-            button:hover {
-                background-color: #5a3ea6;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            }
-
-        @keyframes fadeInOpacity {
-            0% {
-                opacity: 0;
-            }
-
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeOutOpacity {
-            0% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Nugget</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="b.png">
 </head>
-<body onload="document.querySelector('.fade').style.opacity = 1;">
-    <nav> <button onclick="window.location.reload()">Home</button> <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button> <button onclick="window.open('https://www.meta.com/experiences/freaky-nugget/27442133125385525/', '_blank')">Download</button> </nav> <header> <h1>Project Nugget</h1> </header> <main> <h2 class="fade">Welcome to the Project Nugget Website!</h2> <h2 class="fade">Here, you can buy Merch (soon)</h2> <h2 class="fade">Find our Discord & Game Download.</h2> <h2 class="fade">And more will be here soon.</h2> <h2 class="fade">Thanks for visiting!</h2> </main> <footer> <p>&copy; 2025 AnotherNugget | Money that is made off Project Nugget is non-profit.</p> <p>Contact us at <a href="mailto:asteroidbusiness1@gmail.com">asteroidbusiness1@gmail.com</a></p> <p>In-game reports MUST be completed through the leaderboard or the Discord</p> <button onclick="window.open('https://discord.gg/projectnugget', '_blank')">Discord</button> </footer>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="b.png" alt="Project Nugget Logo" width="40" height="40">
+      <span>Project Nugget</span>
+    </div>
+    <div class="nav-links">
+      <a href="https://www.meta.com/experiences/freaky-nugget/27442133125385525/" target="_blank">Play Now</a>
+      <a href="shop.html">Shop</a>
+      <a href="index.html">Home</a>
+    </div>
+  </nav>
 
-    <script>window.addEventListener('scroll', function () { const h2Elements = document.querySelectorAll('h2'); h2Elements.forEach((h2) => { const rect = h2.getBoundingClientRect(); if (rect.top < window.innerHeight && rect.bottom >= 0) { h2.style.animation = 'fadeInOpacity 1s forwards'; } else { h2.style.animation = 'fadeOutOpacity 1s forwards'; } }); });</script>
+  <main>
+    <section class="hero">
+      <div class="hero-content fade-in-element">
+        <h1>Project Nugget | Official Site</h1>
+        <p>Meet Project Nugget. A Gorilla Tag Copy with much features to explore.</p>
+        <div class="hero-buttons">
+          <button class="cta-button" onclick="document.querySelector('.game-preview').scrollIntoView({behavior: 'smooth'})">
+            Discover More
+          </button>
+          <button class="cta-button secondary" onclick="document.querySelector('.creator-opinions').scrollIntoView({behavior: 'smooth'})">
+            Creators Opinions
+          </button>
+        </div>
+      </div>
+      <div class="floating-nuggets"></div>
+    </section>
+
+    <section class="trailer-section fade-in-element">
+      <div class="trailer-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/_yVw6MZIqC4?si=BLg9pHlfOfIq9mW8" 
+          title="YouTube video player" frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="game-preview">
+      <div class="features">
+        <div class="feature-card fade-in-element">
+          <div class="feature-image">
+            <img src="mods.png" alt="Built-in Mods">
+          </div>
+          <h3>Built-in Mods</h3>
+          <p>Ever wanted Gorilla Tag Mods? Now you can get them!</p>
+        </div>
+        
+        <div class="feature-card fade-in-element">
+          <div class="feature-image">
+            <img src="cool.png" alt="Good Lighting">
+          </div>
+          <h3>Good Lighting</h3>
+          <p>We have nice looking lighting!</p>
+        </div>
+
+        <div class="feature-card fade-in-element">
+          <div class="feature-image">
+            <img src="cool2.png" alt="Frequent Updates">
+          </div>
+          <h3>Frequent Updates</h3>
+          <p>We offer updates which is pretty frequent!</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="creator-opinions fade-in-element">
+      <h2>Creator Opinions</h2>
+      <div class="opinions-grid">
+        <div class="opinion-card fade-in-element">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/O55vnMx7Oao?si=wAFOsFHB1zlwDEB3" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="opinion-card fade-in-element">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Il-k3C9mYlU?si=d1G0JNAo3W06ZvFd" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="opinion-card fade-in-element">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/Z1p3umaxVmA?si=N8MQcux4SPPiwLvr" 
+            title="YouTube video player" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section fade-in-element">
+      <div class="cta-content">
+        <h2>Ready to join the hype? It starts here.</h2>
+        <a href="https://www.meta.com/experiences/freaky-nugget/27442133125385525/" target="_blank" class="cta-button">Play Now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content fade-in-element">
+      <div class="footer-section">
+        <h4>Connect</h4>
+        <a href="https://discord.gg/projectnugget" target="_blank">Discord</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2023 Project Nugget. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
