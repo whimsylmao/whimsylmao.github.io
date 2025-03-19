@@ -1,0 +1,115 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #1e0033, #000000); 
+    color: #fff; 
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+.header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(30, 0, 51, 0.8);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.header a {
+    color: #dda0dd;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-transform: lowercase;
+    transition: color 0.3s ease;
+}
+
+.header a:hover {
+    color: #fff;
+}
+
+.header a + a {
+    margin-left: 20px;
+}
+
+.container {
+    background-color: rgba(30, 0, 51, 0.8); 
+    padding: 20px;
+    border-radius: 12px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+    width: 500px;
+    text-align: center;
+}
+
+h1 {
+    color: #dda0dd; 
+    text-transform: lowercase; 
+    font-size: 2em; 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #dda0dd; 
+    text-transform: lowercase; 
+}
+
+input[type="text"], 
+input[type="number"] {
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #4b0082; 
+    border-radius: 6px; 
+    box-sizing: border-box;
+    background-color: #1e0033; 
+    color: #fff; 
+}
+
+button {
+    background: linear-gradient(to right, #800080, #4b0082); 
+    color: white;
+    padding: 12px 20px; 
+    border: none;
+    width: 100%;
+    border-radius: 6px; 
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: lowercase; 
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background: linear-gradient(to right, #4b0082, #800080); 
+}
+
+#footer {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: #dda0dd;
+    font-weight: bold;
+    text-transform: lowercase;
+}
+
+#status {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #dda0dd; 
+    text-transform: lowercase; 
+}
+
+.home-page {
+    text-align: center;
+    font-size: 2em;
+}
